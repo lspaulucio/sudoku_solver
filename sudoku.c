@@ -149,6 +149,7 @@ int main()
     int s[9][9];
 
     sudoku_read(s);
+    printf("%d\n", sudoku_check(s, 1, 0, 2));
     sudoku_solve(s, 0, 0);
     sudoku_print(s);
 
