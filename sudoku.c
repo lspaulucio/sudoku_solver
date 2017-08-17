@@ -112,7 +112,7 @@ bool sudoku_check(int v[][9], int value, int lin, int col)
 
 bool sudoku_solve(int v[][9], int lin, int col)
 {
-    int value;
+    int value, i, j;
 
     for(i=lin;i<9;i++)
     {
@@ -122,12 +122,14 @@ bool sudoku_solve(int v[][9], int lin, int col)
             {
                 for(value = 1; value < 10; value++)
                 {
-                    if(sudoku_check(s, value, i, j))
+                    if(sudoku_check(v, value, i, j))
                     {
                         v[i][j] = value;
                     }
                     else
+                    {
                         continue;
+                    }
 
                     if(sudoku_solve(v, i, j))
                     {
@@ -147,8 +149,8 @@ int main()
     int s[9][9];
 
     sudoku_read(s);
-    // sudoku_print(s);
     sudoku_solve(s, 0, 0);
+    sudoku_print(s);
 
     return 0;
 }
